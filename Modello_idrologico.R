@@ -1,3 +1,5 @@
+rm(list=ls())
+
 T=readline("Tempo di ritorno: ")
   T=as.numeric(T)
 CV=readline("CV: ")
@@ -13,6 +15,13 @@ Dt=readline("Time-step dello ieogramma: ")
   Dt=as.numeric(Dt)
 r=readline("Posizione del picco: ")
   r=as.numeric(r)
+  
+AMC=readline("AMC: ")
+  AMC=as.numeric(AMC)
+CN2=readline("CN2: ")
+  CN2=as.numeric(CN2)
+c=readline("c: ")
+  c=as.numeric(c)
 
 v=readline("Valore della velocità: ")
   v=as.numeric(v)
@@ -27,7 +36,8 @@ L=readline("Lunghezza dell'asta principale: ")
 S=readline("Superficie del bacino: ")
   S=as.numeric(S)
 lag=readline("Tempo di lag: ")
-
+  lag=as.numeric(lag)
+  
 d=1:24
 t=seq(from=Dt, to=tc, by=Dt)
 ta=r*tc; 
@@ -97,9 +107,9 @@ barplot(P)
 #GIUH
 N=(3.29*(Rb/Ra)^0.78)*(Rl^0.07)
 k=(0.7*(Ra/Rb*Rl)^0.48)*(L/v)
-x=0:lag*3600
-ht=
-indici=(Dt*3600):Dt*3600:lag*3600
+x=seq(from=0, to=lag*3600)
+ht=pgamma(x, N, k)
+indici=seq(from=Dt*3600, to=lag*3600, by=Dt*3600)
 
 UH1=ht[indici]
 UH2=matrix(0, 1:length(UH1)+1, 1)
