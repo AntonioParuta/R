@@ -55,9 +55,6 @@ Mat=matrix(0, length(t), 8)
 tavi=seq(from=ta, to=Dt, by=-1)
 Mat[,2]=c(tavi, matrix(0, length(t)-length(tavi), 1))
 
-tavi1=seq(from=ta-Dt, to=0, by=-Dt)
-Mat[,3]=c(tavi1, matrix(0, length(t)-length(tavi), 1))
-
 tsvi=seq(from=ts-Dt, to=0, by=-Dt)
 tsvi=c(tsvi, matrix(0, length(t)-length(tsvi), 1))
 Mat[,4]=rev(tsvi)
@@ -108,7 +105,7 @@ barplot(P)
 N=(3.29*(Rb/Ra)^0.78)*(Rl^0.07)
 k=(0.7*(Ra/Rb*Rl)^0.48)*(L/v)
 x=seq(from=0, to=lag*3600)
-ht=pgamma(x, N, k)
+ht=gammaf(x, k, N)
 indici=seq(from=Dt*3600, to=lag*3600, by=Dt*3600)
 
 UH1=ht[indici]
